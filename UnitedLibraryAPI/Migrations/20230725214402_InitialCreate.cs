@@ -25,7 +25,7 @@ namespace UnitedLibraryAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Librarys",
+                name: "Libraries",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -34,7 +34,7 @@ namespace UnitedLibraryAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Librarys", x => x.Id);
+                    table.PrimaryKey("PK_Libraries", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -81,9 +81,9 @@ namespace UnitedLibraryAPI.Migrations
                 {
                     table.PrimaryKey("PK_Address", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Address_Librarys_LibraryId",
+                        name: "FK_Address_Libraries_LibraryId",
                         column: x => x.LibraryId,
-                        principalTable: "Librarys",
+                        principalTable: "Libraries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -107,9 +107,9 @@ namespace UnitedLibraryAPI.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LibraryBooks_Librarys_LibraryId",
+                        name: "FK_LibraryBooks_Libraries_LibraryId",
                         column: x => x.LibraryId,
-                        principalTable: "Librarys",
+                        principalTable: "Libraries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -203,7 +203,7 @@ namespace UnitedLibraryAPI.Migrations
                 name: "Books");
 
             migrationBuilder.DropTable(
-                name: "Librarys");
+                name: "Libraries");
 
             migrationBuilder.DropTable(
                 name: "Novels");

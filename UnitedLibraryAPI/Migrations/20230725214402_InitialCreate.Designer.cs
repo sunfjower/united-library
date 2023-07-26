@@ -11,7 +11,7 @@ using UnitedLibraryAPI.Data;
 namespace UnitedLibraryAPI.Migrations
 {
     [DbContext(typeof(UnitedLibraryContext))]
-    [Migration("20230721205956_InitialCreate")]
+    [Migration("20230725214402_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -19,6 +19,7 @@ namespace UnitedLibraryAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .UseCollation("SQL_Ukrainian_CP1251_CI_AS")
                 .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -108,7 +109,7 @@ namespace UnitedLibraryAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Librarys");
+                    b.ToTable("Libraries");
                 });
 
             modelBuilder.Entity("UnitedLibraryAPI.Models.LibraryBook", b =>

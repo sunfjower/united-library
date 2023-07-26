@@ -1,15 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using UnitedLibraryAPI.Data;
+using UnitedLibraryAPI.Repository;
 using Microsoft.Data.SqlClient;
 using System.Reflection;
+using UnitedLibraryAPI.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<UnitedLibraryContext>(options =>
 {

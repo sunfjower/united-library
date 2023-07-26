@@ -12,7 +12,7 @@ namespace UnitedLibraryAPI.Data
         
         }
 
-        public DbSet<Library> Librarys { get; set; }
+        public DbSet<Library> Libraries { get; set; }
 
         public DbSet<Address> Address { get; set; }
 
@@ -30,6 +30,8 @@ namespace UnitedLibraryAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.UseCollation("SQL_Ukrainian_CP1251_CI_AS");
+
             modelBuilder.Entity<LibraryBook>()
                 .HasKey(lb => new { lb.LibraryId, lb.BookId });
             modelBuilder.Entity<LibraryBook>()

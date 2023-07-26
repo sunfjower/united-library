@@ -4,9 +4,6 @@ namespace UnitedLibraryAPI.Models
 {
     public class LibraryBook
     {
-        [Key]
-        public int Id { get; set; }
-
         public int InAvailable { get; set; }
 
         [Required]

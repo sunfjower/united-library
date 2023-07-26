@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UnitedLibraryAPI.Data;
 
@@ -10,9 +11,11 @@ using UnitedLibraryAPI.Data;
 namespace UnitedLibraryAPI.Migrations
 {
     [DbContext(typeof(UnitedLibraryContext))]
-    partial class UnitedLibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20230726063853_RemovedLibraryBookId")]
+    partial class RemovedLibraryBookId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
