@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
-using UnitedLibraryAPI.Data;
+﻿using UnitedLibraryAPI.Data;
 using UnitedLibraryAPI.Interfaces;
 using UnitedLibraryAPI.Models;
 
@@ -8,6 +7,7 @@ namespace UnitedLibraryAPI.Repository
     public class LibraryRepository : ILibraryRepository
     {
         private readonly UnitedLibraryContext _context;
+
         public LibraryRepository(UnitedLibraryContext context) 
         {
             _context = context;

@@ -14,6 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<INovelRepository, NovelRepository>();
+builder.Services.AddScoped<IWriterRepository, WriterRepository>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<UnitedLibraryContext>(options =>
 {
