@@ -1,0 +1,17 @@
+<h1>Домашня сторінка</h1>
+
+{{title}}
+<input type="text" #testTemplate>
+<button (click)="handleClick(testTemplate)">Click me!</button>
+
+<table>
+    <thead>
+        <th>Title</th>
+        <th>Novel</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let novel of novels; let i = index">
+            <td [class.famous-novel]="novel.isFamous">{{novel.name}}</td>
+        </tr>
+    </tbody>
+</table>
