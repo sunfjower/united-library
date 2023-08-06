@@ -13,31 +13,28 @@ namespace UnitedLibraryAPI.Controllers
         private readonly IBookRepository _bookRepository;
         private readonly IMapper _mapper;
 
-        public BookController(IBookRepository bookRepository, IMapper mapper) 
+        public BookController(IBookRepository bookRepository, IMapper mapper)
         {
             _bookRepository = bookRepository;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public IActionResult GetBooks() 
-        {
-            if (!ModelState.IsValid) 
-                return BadRequest(ModelState);
-
-            var books = _mapper.Map<List<BookDto>>(_bookRepository.GetBooks());
-
-            return Ok(books);
-        }
-
-        [HttpGet("{bookTitle}")]
-        public IActionResult GetBooks(string bookTitle) 
+        public IActionResult GetAllBooks()
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var books = _mapper.Map<List<BookDto>>(_bookRepository.GetBooks(bookTitle));
-           
+            var books = _mapper.Map<List<BookDto>>(_bookRepository.GetAllBooks());
+
+            return Ok(books);
+        }
+
+        [HttpGet("{state}/{city}/{novel}")]
+        public IActionResult GetBooksByLibraryAndNovel(string state, string city, string novel) 
+        {
+            var books = _mapper.Map<List<BookDto>>(_bookRepository.GetBooksByLibraryAndNovel(state, city, novel));
+            
             return Ok(books);
         }
     }

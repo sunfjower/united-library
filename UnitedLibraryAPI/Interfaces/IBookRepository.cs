@@ -4,8 +4,8 @@ namespace UnitedLibraryAPI.Interfaces
 {
     public interface IBookRepository
     {
-        ICollection<Book> GetBooks();
+        ICollection<Book> GetAllBooks();
 
-        ICollection<Book> GetBooks(string title);
+        ICollection<Book> GetBooksByLibraryAndNovel(string city, string state,string novel);
     }
 }
