@@ -1,6 +1,7 @@
 #Dirictories
 .config/
 .vs/
+.angular/cache/
 bin/
 obj/
 Properties/
