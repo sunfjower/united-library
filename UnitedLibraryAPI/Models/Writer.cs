@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace UnitedLibraryAPI.Models
 {
@@ -18,8 +19,10 @@ namespace UnitedLibraryAPI.Models
         public string LastName { get; set; }
 
         [Column(TypeName = "varchar(50)")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string ThirdName { get; set; }
 
+        [JsonIgnore]
         public ICollection<NovelWriter> Novels { get; set; }
 
     }
