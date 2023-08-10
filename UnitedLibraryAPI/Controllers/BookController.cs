@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text.Json;
 using UnitedLibraryAPI.Dto;
 using UnitedLibraryAPI.Interfaces;
 using UnitedLibraryAPI.Models;
@@ -20,22 +23,24 @@ namespace UnitedLibraryAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllBooks()
+        public async Task<IActionResult> GetAllBooks()
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var books = _mapper.Map<List<BookDto>>(_bookRepository.GetAllBooks());
+            var books = await _bookRepository.GetAllBooks();
+            var mappedBooks = _mapper.Map<List<BookDto>>(books);
 
-            return Ok(books);
+            return Ok(mappedBooks);
         }
 
         [HttpGet("{state}/{city}/{novel}")]
-        public IActionResult GetBooksByLibraryAndNovel(string state, string city, string novel) 
+        public async Task<IActionResult> GetBooksByLibraryAndNovel(string state, string city, string novel) 
         {
-            var books = _mapper.Map<List<BookDto>>(_bookRepository.GetBooksByLibraryAndNovel(state, city, novel));
-            
-            return Ok(books);
+            var books = await _bookRepository.GetBooksByLibraryAndNovel(state, city, novel);
+            var mappedBooks = _mapper.Map<List<BookDto>>(books);
+
+            return Ok(mappedBooks);
         }
     }
 }
