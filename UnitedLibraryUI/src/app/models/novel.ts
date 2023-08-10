@@ -1,3 +1,7 @@
+import { Writer } from "./writer";
+
 export class Novel {
-    name: string = ''
+    id: number = 0;
+    name: string = "";
+    writers: Writer[] = []
 }
