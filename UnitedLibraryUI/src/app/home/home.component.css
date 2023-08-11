@@ -1,3 +1,45 @@
-.famous-novel{
+.landing {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    text-align: center;
+    height: calc(100vh - 300px);
+}
+
+.landing p {
+    color: aliceblue;
+}
+
+.landing-search-panel {
+    display: flex;
+}
+
+.landing-search-panel input {
+    width: 600px;
+    height: 45px;
+    border: none;
+    appearance: none;
+    outline: none;
+    font-size: 23px;
+    border-radius: 20px 0px 0px 20px;
+    padding-left: 20px;
+}
+
+/* .landing-search-panel input:focus {
+    border: 3.5px solid #E8974A;
+} */
+
+.landing-search-panel button {
+    height: 47px;
+    font-size: 23px;
+    padding: 0 30px 0 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.landing-search-panel fa-icon {
     color: blueviolet;
 }
+
+

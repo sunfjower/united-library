@@ -1,17 +1,11 @@
-<h1>Домашня сторінка</h1>
 
-{{title}}
-<input type="text" #testTemplate>
-<button (click)="handleClick(testTemplate)">Click me!</button>
+<section class="landing">
+    <p>Домашня сторінка</p>
+    <div class="landing-search-panel">
+        <input type="text" #testTemplate placeholder="Пошук книг...">
+        <button (click)="handleClick(testTemplate)"><fa-icon [icon]="searchIcon"></fa-icon></button>
+        <label for=""></label>
+    </div>
+</section>
 
-<table>
-    <thead>
-        <th>Title</th>
-        <th>Novel</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let novel of novels; let i = index">
-            <td [class.famous-novel]="novel.isFamous">{{novel.name}}</td>
-        </tr>
-    </tbody>
-</table>
+
