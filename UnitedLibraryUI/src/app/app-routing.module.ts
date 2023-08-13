@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './page-not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'search', component: SearchComponent},
