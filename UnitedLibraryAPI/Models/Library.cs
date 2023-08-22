@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace UnitedLibraryAPI.Models
 {
@@ -15,6 +16,7 @@ namespace UnitedLibraryAPI.Models
 
         public Address PhysicalAddress { get; set; }
 
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public ICollection<LibraryBook> Books { get; set; }
     }
 }

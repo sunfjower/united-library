@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace UnitedLibraryAPI.Models
 {
@@ -25,7 +26,9 @@ namespace UnitedLibraryAPI.Models
         [Column(TypeName = "varchar(20)")]
         public string ZipCode { get; set; }
 
+        [JsonIgnore]
         public int LibraryId { get; set; }
+        [JsonIgnore]
         public Library Library { get; set; }
     }
 }
