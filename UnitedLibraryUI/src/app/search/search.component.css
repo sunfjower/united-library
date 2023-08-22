@@ -1,0 +1,92 @@
+.search-page{
+    align-items: center;
+    justify-content: center;
+    display: grid;
+}
+
+.search-page p {
+    color: aliceblue;
+}
+
+.container {
+    margin: 25px;
+    padding: 15px;
+    background-color:  rgb(98, 97, 96);
+    box-shadow: 0px 0px 15px #000000;
+    border-radius: 30px;
+    position: relative;
+    display: grid;
+    grid-template-rows: 100px auto 150px;
+    justify-content: center;
+    align-items: center;  
+    overflow-y: auto;
+}
+
+.container-head {
+    text-align: center;
+}
+
+.container-center {
+
+}
+
+.container-foot {
+
+}
+
+
+.card-grid {
+    column-count: 3;
+    column-gap: 10px;
+    /* margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 300px));
+    gap: 0.5rem;
+    break-inside: avoid;
+    align-items: flex-start; */
+}
+
+.card {
+    margin: 0;
+    display: grid;
+    grid-template-columns: minmax(280px, 280px);
+    grid-template-rows: 1fr auto;
+    margin-bottom: 10px;
+    break-inside: avoid;
+    background-color: #edcc51;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    padding: 20px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Received customer location: state and city. */
+.step-1 {
+    width: 600px;
+    height: 500px;
+}
+
+/* Showed books by customer request. */
+.step-2 {
+    width: 1100px;
+    height: 650px;
+}
+
+/* Showed selected book details. */
+.step-3 {
+    width: 600px;
+    height: 500px;
+}
+
+/* Showed a libraries where the selected book exists . */
+.step-4 {
+    width: 600px;
+    height: 500px;
+}
+
+/* Showed a map with libraries where the selected book exists. */
+.step-5 {
+    width: 600px;
+    height: 500px;
+}
+

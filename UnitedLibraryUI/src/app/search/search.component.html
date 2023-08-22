@@ -1,1 +1,100 @@
-<p>Пошукова сторінка</p>
+<section class="search-page">
+    <app-search-stepper>
+
+        <cdk-step #step1="cdkStep">
+            <form [formGroup]="userLocation" class="container step-1">
+                <div class="container-head"></div>
+                <div class="container-center">
+                    <p>Будь ласка оберіть свою область</p>
+                    <select formControlName="state">
+                        <option value="Dnipropetrovsk Oblast">Дніпропетровська область</option>
+                        <option value="Kirovohrad Oblast">Кіровоградська область</option>
+                    </select>
+                    <p>Будь ласка оберіть своє місто</p>
+                    <select formControlName="city">
+                        <option value="Kryvyi Rih">Кривий Ріг</option>
+                        <option value="Kropyvnytskyi">Кропівницький</option>
+                    </select>
+                </div>
+                <div class="container-foot">
+                    <button type="button" (click)="loadBooks()" cdkStepperNext>Далі</button>
+                </div>
+            </form>
+        </cdk-step>
+
+        <cdk-step cdkStep #step2="cdkStep">
+            <form [formGroup]="bookList" class="container step-2">
+                <div class="container-head">
+                    <input type="text" formControlName="search" placeholder="Пошук...">
+                    <button type="button" (click)="loadBooks()">Шукати</button>
+                </div>
+                <div class="card-grid container-center">
+                    <div *ngFor="let book of books" class="card">
+                        {{book.title}}
+                        <div>
+                            <button type="button" (click)="showDetails(book)" cdkStepperNext>Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-foot">
+                    <button type="button" cdkStepperPrevious>Назад</button>
+                </div>
+            </form>
+        </cdk-step>
+
+        <cdk-step cdkStep #step3="cdkStep">
+            <form class="container step-3">
+                <div class="container-head"></div>
+                <div *ngIf="bookDetails" class="container-center">
+                    <div>
+                        {{bookDetails.title}}
+                    </div>
+                    <div *ngFor="let novel of bookDetails.novels">
+                        {{novel.name}}
+                    </div>
+                    <div *ngFor="let writer of writers">
+                        {{writer.firstName}}
+                        {{writer.lastName}}
+                    </div>
+                </div>
+                <div class="container-foot">
+                    <button type="button" cdkStepperPrevious>Назад</button>
+                    <button type="button" (click)="showLibraries()" cdkStepperNext>Обрати</button>
+                </div>
+            </form>
+        </cdk-step>
+
+        <cdk-step cdkStep #step4="cdkStep">
+            <form class="container step-4">
+                <div class="container-head"></div>
+                <div *ngIf="libraries" class="container-center">
+                    <div *ngFor="let library of libraries">
+                        {{library.name}}
+                        {{library.physicalAddress.street}}
+                        {{library.physicalAddress.city}}
+                        {{library.physicalAddress.state}}
+                        {{library.physicalAddress.zipCode}}
+                    </div>
+                </div>
+                <div class="container-foot">
+                    <button type="button" cdkStepperPrevious>Назад</button>
+                    <button type="button" cdkStepperNext>Показати на мапі</button>
+                </div>
+            </form>
+        </cdk-step>
+
+        <cdk-step cdkStep #step5="cdkStep">
+            <form class=" container step-5">
+                <div class="container-head"></div>
+                <div class="container-center">
+                    <b>МАПА</b>
+                </div>
+                <div class="container-foot">
+                    <button type="button" cdkStepperPrevious>Назад</button>
+                </div>
+            </form>
+        </cdk-step>
+        
+    </app-search-stepper>
+</section>

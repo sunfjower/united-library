@@ -2,8 +2,8 @@
 <section class="landing">
     <p>Домашня сторінка</p>
     <div class="landing-search-panel">
-        <input type="text" #testTemplate placeholder="Пошук книг...">
-        <button (click)="handleClick(testTemplate)"><fa-icon [icon]="searchIcon"></fa-icon></button>
+        <input type="text" #searchText placeholder="Пошук книг...">
+        <button (click)="handleClick(searchText.value)"><fa-icon [icon]="searchIcon"></fa-icon></button>
         <label for=""></label>
     </div>
 </section>

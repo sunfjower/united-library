@@ -1,5 +1,5 @@
-import { style } from "@angular/animations";
 import { Component } from "@angular/core";
+import { Router, Routes } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,11 +15,12 @@ export class HomeComponent {
 
   searchIcon = faMagnifyingGlass;
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
   
-    handleClick(value: any) {
+    handleClick(value: string) {
+      this.router.navigate(['/search', {searchText: value}]);
       console.log(value);
     }
 
