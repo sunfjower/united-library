@@ -35,9 +35,12 @@ namespace UnitedLibraryAPI.Controllers
         }
 
         [HttpGet("{state}/{city}/{novel}")]
-        public async Task<IActionResult> GetBooksByLibraryAndNovel(string state, string city, string novel) 
+        public async Task<IActionResult> GetBooksByLocationAndNovel(string state, string city, string novel) 
         {
-            var books = await _bookRepository.GetBooksByLibraryAndNovel(state, city, novel);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var books = await _bookRepository.GetBooksByLocationAndNovel(state, city, novel);
             var mappedBooks = _mapper.Map<List<BookDto>>(books);
 
             return Ok(mappedBooks);

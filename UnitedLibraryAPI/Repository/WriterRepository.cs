@@ -1,4 +1,5 @@
-﻿using UnitedLibraryAPI.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using UnitedLibraryAPI.Data;
 using UnitedLibraryAPI.Interfaces;
 using UnitedLibraryAPI.Models;
 
@@ -13,9 +14,17 @@ namespace UnitedLibraryAPI.Repository
             _context = context;
         }
 
-        public ICollection<Writer> GetWriters()
+        public async Task<ICollection<Writer>> GetAllWriters()
         {
-            List<Writer> writers = _context.Writers.ToList();
+            List<Writer> writers = await _context.Writers.ToListAsync();
+            return writers;
+        }
+
+        public async Task<ICollection<Writer>> GetWritersByBookId(int bookId)
+        {
+            List<Writer> writers = await _context.Writers
+                .Where(w => w.Novels.Any(n => n.Novel.Books.Any(b => b.BookId == bookId)))
+                .ToListAsync();
             return writers;
         }
     }

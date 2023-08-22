@@ -4,8 +4,10 @@ namespace UnitedLibraryAPI.Interfaces
 {
     public interface ILibraryRepository
     {
-        ICollection<Library> GetLibraries();
+        Task<ICollection<Library>> GetAllLibraries();
 
-        ICollection<Library> GetLibraries(string address);
+        Task<ICollection<Library>> GetLibrariesByLocationAndBookId(string state, string city, int bookId);
+
+        Task<ICollection<Library>> GetLibrariesByStateAndCity(string state, string city);
     }
 }

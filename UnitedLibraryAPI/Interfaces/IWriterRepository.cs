@@ -4,6 +4,8 @@ namespace UnitedLibraryAPI.Interfaces
 {
     public interface IWriterRepository
     {
-        ICollection<Writer> GetWriters();
+        Task<ICollection<Writer>> GetAllWriters();
+
+        Task<ICollection<Writer>> GetWritersByBookId(int bookId);
     }
 }

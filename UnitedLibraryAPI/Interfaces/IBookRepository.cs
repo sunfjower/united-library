@@ -6,6 +6,6 @@ namespace UnitedLibraryAPI.Interfaces
     {
         Task<ICollection<Book>> GetAllBooks();
 
-        Task<ICollection<Book>> GetBooksByLibraryAndNovel(string city, string state,string novel);
+        Task<ICollection<Book>> GetBooksByLocationAndNovel(string city, string state,string novel);
     }
 }

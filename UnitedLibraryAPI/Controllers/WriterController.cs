@@ -18,9 +18,22 @@ namespace UnitedLibraryAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetWriters()
+        public async Task<IActionResult> GetAllWriters()
         {
-            var writers = _writerRepository.GetWriters();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var writers = await _writerRepository.GetAllWriters();
+            return Ok(writers);
+        }
+
+        [HttpGet("{bookId}")]
+        public async Task<IActionResult> GetWritersByBookId(int bookId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var writers = await _writerRepository.GetWritersByBookId(bookId);
             return Ok(writers);
         }
     }
