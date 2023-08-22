@@ -4,10 +4,13 @@ namespace UnitedLibraryAPI.Interfaces
 {
     public interface IAddressRepository
     {
-        ICollection<Address> GetAddresses();
+        Task<ICollection<Address>> GetAllAddresses();
 
-        ICollection<Address> GetAddressesByCity(string city);
+        Task<ICollection<Address>> GetAddressesByCity(string city);
 
-        ICollection<Address> GetAddressesByState(string state);
+        Task<ICollection<Address>> GetAddressesByState(string state);
+
+        Task<ICollection<Address>> GetAddressesByStateAndCity(string state, string city);
+
     }
 }

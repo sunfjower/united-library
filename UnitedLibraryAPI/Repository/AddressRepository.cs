@@ -1,4 +1,5 @@
-﻿using UnitedLibraryAPI.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using UnitedLibraryAPI.Data;
 using UnitedLibraryAPI.Interfaces;
 using UnitedLibraryAPI.Models;
 
@@ -13,21 +14,39 @@ namespace UnitedLibraryAPI.Repository
             _context = context;
         }
 
-        public ICollection<Address> GetAddresses()
+        public async Task<ICollection<Address>> GetAllAddresses()
         {
-            List<Address> addresses = _context.Address.OrderBy(a => a.State).ToList();
+            List<Address> addresses = await _context.Address
+                .OrderBy(a => a.State)
+                .ToListAsync();
+
             return addresses;
         }
 
-        public ICollection<Address> GetAddressesByCity(string city)
+        public async Task<ICollection<Address>> GetAddressesByCity(string city)
         {
-            List<Address> addresses = _context.Address.Where(a => a.City == city).ToList();
+            List<Address> addresses = await _context.Address
+                .Where(a => a.City == city)
+                .ToListAsync();
+
             return addresses;
         }
 
-        public ICollection<Address> GetAddressesByState(string state)
+        public async Task<ICollection<Address>> GetAddressesByState(string state)
         {
-            List<Address> addresses = _context.Address.Where(a => a.State == state).ToList();
+            List<Address> addresses = await _context.Address
+                .Where(a => a.State == state)
+                .ToListAsync();
+
+            return addresses;
+        }
+
+        public async Task<ICollection<Address>> GetAddressesByStateAndCity(string state, string city)
+        {
+            List<Address> addresses = await _context.Address
+                .Where(a => a.State == state && a.City == city)
+                .ToListAsync();
+
             return addresses;
         }
     }

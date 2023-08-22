@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using UnitedLibraryAPI.Dto;
 using UnitedLibraryAPI.Interfaces;
 
 namespace UnitedLibraryAPI.Controllers
@@ -18,11 +19,10 @@ namespace UnitedLibraryAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetNovels() 
+        public async  Task<IActionResult> GetNovels() 
         {
-            var novels = _novelRepository.GetNovels();
+            var novels = await _novelRepository.GetAllNovels();
             return Ok(novels);
         }
-
     }
 }

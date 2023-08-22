@@ -1,4 +1,6 @@
-﻿using UnitedLibraryAPI.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using UnitedLibraryAPI.Data;
+using UnitedLibraryAPI.Dto;
 using UnitedLibraryAPI.Interfaces;
 using UnitedLibraryAPI.Models;
 
@@ -13,21 +15,9 @@ namespace UnitedLibraryAPI.Repository
             _context = context;   
         }
 
-        public Novel GetNovelByName(string name)
+        public async Task<ICollection<Novel>> GetAllNovels()
         {
-            Novel novel = _context.Novels.Where(n => n.Name == name).FirstOrDefault();
-            return novel;
-        }
-
-        public ICollection<Novel> GetNovels()
-        {
-            List<Novel> novels = _context.Novels.OrderBy(n => n.Name).ToList();
-            return novels;
-        }
-
-        public ICollection<Novel> GetNovelsByName(string name)
-        {
-            List<Novel> novels = _context.Novels.Where(n => n.Name.Contains(name)).ToList();
+            List<Novel> novels = await _context.Novels.OrderBy(n => n.Name).ToListAsync();
             return novels;
         }
     }

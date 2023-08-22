@@ -18,33 +18,13 @@ namespace UnitedLibraryAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAdresses() 
+        public async Task<IActionResult> GetAllAdresses() 
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var addresses = _addressRepository.GetAddresses();
+            var addresses = await _addressRepository.GetAllAddresses();
             return Ok(addresses);
         }
-
-        [HttpGet("{city}")]
-        public IActionResult GetAddressesByCity(string city) 
-        {
-            if(!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var addresses = _addressRepository.GetAddressesByCity(city);
-            return Ok(addresses);
-        }
-
-/*        [HttpGet("{state}")]
-        public IActionResult GetAddressesByState(string state)
-        {
-            if(!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var addresses = _addressRepository.GetAddressesByState(state);
-            return Ok(addresses);
-        }*/
     }
 }
