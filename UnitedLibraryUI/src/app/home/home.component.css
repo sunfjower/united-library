@@ -1,3 +1,46 @@
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+.navbar {
+    background-color: var(--yellow);
+    text-align: center;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    margin-top: 15px;
+    padding: 15px;
+    width: 600px;
+}
+
+.navbar .logo {
+    margin-right: 30px;
+    font-weight: 600;
+}
+
+.navbar a {
+    margin: 5x;
+    padding: 7px;
+    text-decoration: none;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--gray);
+}
+
+.navbar .search {
+    margin-left: 45px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 600;
+    color: var(--yellow);
+    background-color: var(--gray);
+    border-radius: 30px;
+}
+
 .landing {
     align-items: center;
     justify-content: center;
